@@ -1,3 +1,7 @@
+## Important /Nov/11/2024/: 
+- I am not the one who wrote all this, i am making a mod as a continuation to Progress knight Reborn.
+
+
 ## progress-knight
 An incremental game developed by ihtasham42 and extended by Cameron Gott. https://camerongott.github.io/progress-knight/
 With assistance from:
