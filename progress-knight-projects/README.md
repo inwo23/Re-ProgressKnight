@@ -1,3 +1,10 @@
+##New devlog:
+All below this is not my work. it's old.
+
+
+
+
+
 ## progress-knight
 An incremental game developed by ihtasham42 and extended by Cameron Gott. https://camerongott.github.io/progress-knight/
 With assistance from:
