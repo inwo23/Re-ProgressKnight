@@ -33,14 +33,14 @@ const baseLifespan = 365 * 70
 
 //Turn on devmode:  1
 //Turn off devmode: 0
-var devModeFastProgress = 1;
+var devModeFastProgress = 0;
 // ******* DEV MODE SPEED INCREASES ******* //
 //original base game speed: 4
 var baseGameSpeed = 10;
 var baseEffect = 0.01;
 if(devModeFastProgress == 1) {
     baseGameSpeed = 1000;
-    baseEffect = 1000;
+    baseEffect = 100000;
 }
 
 const enableVerboseLogging = 0;
@@ -70,9 +70,9 @@ const jobBaseData = {
     "Sailor Captain": { name: "Sailor Captain", maxXp: 10000, income: 300 },
     "Pirate": { name: "Pirate", maxXp: 1000000, income: 500 },
     "Pirate Captain": { name: "Pirate Captain", maxXp: 5000000, income: 5000 },
-    "Warlord of the Sea": { name: "Warlord of the Sea", maxXp: 100000000, income: 2000000 },
-    "Emperor of the Sea": { name: "Emperor of the Sea", maxXp: 500000000, income: 5000000 },
-    "King of Pirates": { name: "King of Pirates", maxXp: 1000000000000, income: 1000000000 },
+    "Warlord of the Sea": { name: "Warlord of the Sea", maxXp: 100000000, income: 2000000},
+    "Emperor of the Sea": { name: "Emperor of the Sea", maxXp: 500000000, income: 5000000},
+    "King of Pirates": { name: "King of Pirates", maxXp: 1000000000000, income: 10000000},
 
 
     "Student": {name: "Student", maxXp: 100000, income: 100},
@@ -100,9 +100,9 @@ const jobBaseData = {
     "Arch Duke": {name: "Arch Duke", maxXp: 40000000000, income: 55000},
     "Lord": {name: "Lord", maxXp: 160000000000, income: 150000},
     "High Lord": {name: "High Lord", maxXp: 1600000000000, income: 300000},
-    "King": {name: "King", maxXp: 16000000000000, income: 300000},
-    "High King": {name: "High King", maxXp: 160000000000000, income: 1200000},
-    "Emperor of Mankind": {name: "Emperor of Mankind", maxXp: 16000000000000000000000, income: 2500000},
+    "King": {name: "King", maxXp: 160000000000000, income: 300000},
+    "High King": {name: "High King", maxXp: 1600000000000000, income: 1200000},
+    "Emperor of Mankind": {name: "Emperor of Mankind", maxXp: 160000000000000000000, income: 10000000},
 
 }
 
@@ -113,6 +113,7 @@ const skillBaseData = {
     "Productivity": {name: "Productivity", maxXp: 100, effect: 0.01, description: "Job xp"},
     "Bargaining": {name: "Bargaining", maxXp: 100, effect: -0.01, description: "Expenses"},
     "Meditation": {name: "Meditation", maxXp: 100, effect: baseEffect, description: "Happiness"},
+    "Learning": {name: "Learning", maxXp: 100, effect: 100, description: "Education xp"},
 
     //Combat
     "Strength": {name: "Strength", maxXp: 100, effect: 0.01, description: "Military pay"},
@@ -120,10 +121,11 @@ const skillBaseData = {
     "Muscle memory": {name: "Muscle memory", maxXp: 100, effect: 0.01, description: "Strength xp"},
 
     //second addition: sailing
-   // Sailing
-   
+    //Sailing
     "Sailing Mastery": {name: "Sailing Mastery", maxXp: 100, effect: 0.01, description: "T.P.G xp"},
     "Wave Reading": {name: "Wave Reading", maxXp: 100, effect: 0.01, description: "T.P.G xp"},
+    "Shipbuilding": {name: "Shipbuilding", maxXp: 100, effect: 0.001, description: "T.P.G pay"},
+    "Port management": {name: "Port management", maxXp: 100, effect: 0.01, description: "T.P.G pay"},
 
     //Magic
     "Mana control": {name: "Mana control", maxXp: 100, effect: baseEffect, description: "T.A.A. xp"},
@@ -140,7 +142,15 @@ const skillBaseData = {
     "Scales Of Thought": {name: "Scales Of Thought", maxXp: 1100, effect: 0.003, description: "Magical xp"},
     "Magical Biology": {name: "Magical Biology", maxXp: 1500, effect: 0.005, description: "Chairman xp"},
 
+    //Education (nobility)
+    "Good behaviour": {name: "Good behaviour", maxXp: 100, effect: 0.01, description: "Nobility xp"},
+    "Principles": {name: "Principles", maxXp: 100, effect: 0.01, description: "Nobility income"},
+    "Math": {name: "Math", maxXp: 100, effect: 0.01, description: "Nobility xp"},
+    "Language": {name: "Language", maxXp: 100, effect: 0.01, description: "Nobility Income"},
+    "History": {name: "History", maxXp: 100, effect: 0.01, description: "Nobility xp"},
+    "Slavery": {name: "Slavery", maxXp: 100, effect: 1, description: "Nobility pay"},
 
+    //evil
     "Dark influence": {name: "Dark influence", maxXp: 100, effect: 0.01, description: "All xp"},
     "Evil control": {name: "Evil control", maxXp: 100, effect: 0.01, description: "Evil gain"},
     "Intimidation": {name: "Intimidation", maxXp: 100, effect: -0.01, description: "Expenses"},
@@ -173,6 +183,8 @@ const itemBaseData = {
     "Small Manor": {name: "Small Manor", expense: 300000, effect: 25},
     "Small palace": {name: "Small palace", expense: 5000000, effect: 60},
     "Grand palace": {name: "Grand palace", expense: 190000000, effect: 135},
+    "Royal Compound": {name: "Royal Compound", expense: 10000000000, effect: 300},
+    "Interconnected Royal Compound": {name: "Interconnected Royal Compound", expense: 100000000000000, effect: 1000},
 
     //Cameron's first addition: rag clothing. Woohoo!
     "Rag Clothing": {name: "Rag Clothing", expense: 3, effect: 1.5, description: "Skill xp"},
@@ -200,7 +212,7 @@ const itemBaseData = {
 const jobCategories = {
     "Common work"            :    ["Beggar", "Farmer", "Fisherman", "Miner", "Blacksmith", "Merchant"],
     "Military"               :    ["Squire", "Footman", "Veteran footman", "Knight", "Veteran knight", "Elite knight", "Holy knight", "Legendary knight"],
-   "The Pirate Guild"        :    ["Normal Sailor", "Sailor Captain", "Pirate", "Pirate Captain", "Warlord of the Sea", "Emperor of the Sea", "King of Pirates"],
+    "The Pirate Guild"       :    ["Normal Sailor", "Sailor Captain", "Pirate", "Pirate Captain", "Warlord of the Sea", "Emperor of the Sea", "King of Pirates"],
     "The Arcane Association" :    ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman", "Illustrious Chairman"],
     "The Order of Discovery" :    ["Junior Caretaker", "Lead Caretaker", "Freshman", "Sophomore", "Junior", "Senior", "Probation"],
     "Nobility"               :    ["Baronet", "Baron", "Vice Count", "Count", "Duke", "Grand Duke", "Arch Duke", "Lord", "High Lord", "King", "High King", "Emperor of Mankind"],
@@ -208,17 +220,19 @@ const jobCategories = {
 }
 
 const skillCategories = {
-    "Fundamentals"           :    ["Concentration", "Productivity", "Bargaining", "Meditation"],
+    "Fundamentals"           :    ["Concentration", "Productivity", "Bargaining", "Meditation", "Learning"],
     "Combat"                 :    ["Strength", "Battle tactics", "Muscle memory"],
-    "Sailing"                :    ["Sailing Mastery", "Wave Reading"],
+    "Sailing"                :    ["Sailing Mastery", "Wave Reading", "Shipbuilding", "Port management"],
     "Magic"                  :    ["Mana control", "Immortality", "Time warping", "Super immortality"],
     "Mind"                   :    ["Novel Knowledge", "Unusual Insight", "Trade Psychology", "Flow", "Magical Engineering", "Scales Of Thought", "Magical Biology"],
+    "Education"              :    ["Good behaviour", "Principles", "Math", "Language", "History", "Slavery"],
     "Dark magic"             :    ["Dark influence", "Evil control", "Intimidation", "Demon training", "Blood meditation", "Demon's wealth"],
-    
 }
 
 const itemCategories = {
-    "Properties": ["Homeless", "Tent", "Wooden hut", "Cottage", "House", "Large house", "Small Manor", "Small palace", "Grand palace"],
+    "Properties": ["Homeless", "Tent", "Wooden hut", "Cottage", "House",
+        "Large house", "Small Manor", "Small palace", 
+        "Grand palace", "Royal Compound", "Interconnected Royal Compound"],
     "Misc": ["Rag Clothing", "Book", "Basic Farm Tools", "Small Field", "Ox-driven Plow", "Livestock-derived Fertilizer", "Cheap Fishing Rod", "Dumbbells", "Miner's Lantern", "Crappy Anvil", "Breech Bellows", "Pack Horse", "Small Shop",
     "Weapon Outlet", "Personal squire", 
                 "Steel longsword", "Butler", "Sapphire charm", "Study desk", "Library"]
@@ -240,12 +254,14 @@ const headerRowColors = {
     "Sailing": "#8fd3fe",
     "Magic": "#875F9A",
     "Mind": "#87009A",
+    "Education": "#02066F",
     "Dark magic": "#73000f",
     "Properties": "#219ebc",
     "Misc": "#b56576",
 }
 
 const tooltips = {
+
     "Beggar": "Struggle day and night for a couple of copper coins. It feels like you are at the brink of death each day.",
     "Farmer": "Plow the fields and grow the crops. It's not much but it's honest work.",
     "Fisherman": "Reel in various fish and sell them for a handful of coins. A relaxing but still a poor paying job.",
@@ -376,7 +392,7 @@ const tooltips = {
     "Livestock-derived Fertilizer": "It's poo.",
 }
 
-const units = ["", "k", "M", "B", "T", "q", "Q", "Sx", "Sp", "Oc"];
+const units = ["", "k", "M", "B", "T", "q", "Q", "Sx", "Sp", "Oc", "No", "De"];
 
 const jobTabButton = document.getElementById("jobTabButton")
 
@@ -426,14 +442,27 @@ function addMultipliers() {
             task.xpMultipliers.push(getBindedTaskEffect("Battle tactics"));
             task.xpMultipliers.push(getBindedItemEffect("Steel longsword"));
        }
-       else if (jobCategories["The Pirate Guild"].includes(task.name)) {
-        console.log(`Task name: ${task.name}`);
+       else if (jobCategories["Nobility"].includes(task.name)) {
+        task.xpMultipliers.push(getBindedTaskEffect("Good behaviour"));
+        task.incomeMultipliers.push(getBindedTaskEffect("Principles"));
+        task.xpMultipliers.push(getBindedTaskEffect("Math"));
+        task.incomeMultipliers.push(getBindedTaskEffect("Language"));
+        task.xpMultipliers.push(getBindedTaskEffect("History"));
+        task.incomeMultipliers.push(getBindedTaskEffect("Slavery"));
+
+       }else if (jobCategories["The Pirate Guild"].includes(task.name)) {
         task.xpMultipliers.push(getBindedTaskEffect("Sailing Mastery"));
         task.xpMultipliers.push(getBindedTaskEffect("Wave Reading"));
-      }
-        else if (jobCategories["The Order of Discovery"].includes(task.name)) {
+        task.incomeMultipliers.push(getBindedTaskEffect("Shipbuilding"));
+        task.incomeMultipliers.push(getBindedTaskEffect("Port management"));
+
+      }else if (jobCategories["The Order of Discovery"].includes(task.name)) {
             task.xpMultipliers.push(getBindedTaskEffect("Novel Knowledge"));
             task.xpMultipliers.push(getBindedTaskEffect("Unusual Insight"));
+        
+       
+
+        
         } else if(task.name == "Farmer") { //trying to make hand tools increase farmer income
             task.incomeMultipliers.push(getBindedItemEffect("Basic Farm Tools"));
             task.xpMultipliers.push(getBindedItemEffect("Small Field"));
@@ -480,15 +509,15 @@ function addMultipliers() {
             task.xpMultipliers.push(getBindedTaskEffect("Scales Of Thought"));
         } else if (skillCategories["Dark magic"].includes(task.name)) {
             task.xpMultipliers.push(getEvil)
+        } else if (skillCategories["Education"].includes(task.name)) {
+            task.xpMultipliers.push(getBindedTaskEffect("Learning"))
         }
         if (jobCategories["The Arcane Association"].includes(task.name)) {
             task.xpMultipliers.push(getBindedTaskEffect("Mana control"));
             task.xpMultipliers.push(getBindedTaskEffect("Novel Knowledge"));
             task.xpMultipliers.push(getBindedTaskEffect("Unusual Insight"));
         }
-        if(jobCategories["Nobility"].includes(task.name)) {
-            //todo
-        }
+       
     }
 
     for (itemName in gameData.itemData) {
@@ -1516,8 +1545,8 @@ gameData.requirements = {
     "Rebirth note 3": new AgeRequirement([document.getElementById("rebirthNote3")], [{requirement: 200}]),
     "Evil info": new EvilRequirement([document.getElementById("evilInfo")], [{requirement: 1}]),
     "Time warping info": new TaskRequirement([document.getElementById("timeWarping")], [{task: "Mage", requirement: 10}]),
-    "Automation": new AgeRequirement([document.getElementById("automation")], [{requirement: 20}]),
-    "Quick task display": new AgeRequirement([document.getElementById("quickTaskDisplay")], [{requirement: 20}]),
+    "Automation": new AgeRequirement([document.getElementById("automation")], [{requirement: 0}]),
+    "Quick task display": new AgeRequirement([document.getElementById("quickTaskDisplay")], [{requirement: 0}]),
 
     //Common work
     "Beggar": new TaskRequirement([getTaskElement("Beggar")], []),
@@ -1544,7 +1573,7 @@ gameData.requirements = {
     "Pirate Captain": new TaskRequirement([getTaskElement("Pirate Captain")], [{task: "Pirate", requirement: 25}, {task: "Battle tactics", requirement: 1000}, {task: "Sailing Mastery", requirement: 1500}]),
     "Warlord of the Sea": new TaskRequirement([getTaskElement("Warlord of the Sea")], [{task: "Pirate Captain", requirement: 100}, {task: "Battle tactics", requirement: 1000}, {task: "Sailing Mastery", requirement: 1500}, {task: "Wave Reading", requirement: 1000}]),
     "Emperor of the Sea": new TaskRequirement([getTaskElement("Emperor of the Sea")], [{task: "Warlord of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2000}, {task: "Sailing Mastery", requirement: 2500}, {task: "Wave Reading", requirement: 2000}]),
-    "King of Pirates": new TaskRequirement([getTaskElement("King of Pirates")], [{task: "Illustrious Chairman", requirement: 10000}, {task: "Emperor of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2500}, {task: "Sailing Mastery", requirement: 3000}, {task: "Wave Reading", requirement: 3000}]), 
+    "King of Pirates": new TaskRequirement([getTaskElement("King of Pirates")], [{task: "Illustrious Chairman", requirement: 2000}, {task: "Emperor of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2500}, {task: "Sailing Mastery", requirement: 3000}, {task: "Wave Reading", requirement: 3000}]), 
 
     //The Arcane Association
     "Student": new TaskRequirement([getTaskElement("Student")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
@@ -1577,14 +1606,15 @@ gameData.requirements = {
     "High Lord": new TaskRequirement([getTaskElement("High Lord")], [{task: "Lord", requirement: 10}]),
     "King": new TaskRequirement([getTaskElement("King")], [{task: "High Lord", requirement: 10}]),
     "High King": new TaskRequirement([getTaskElement("High King")], [{task: "King", requirement: 10}]),
-    "Emperor of Mankind": new TaskRequirement([getTaskElement("Emperor of Mankind")], [{task: "High King", requirement: 10}]),
+    "Emperor of Mankind": new TaskRequirement([getTaskElement("Emperor of Mankind")], [{task: "High King", requirement: 10}, {task: "King of Pirates", requirement: 100}]),
 
     //Fundamentals
     "Concentration": new TaskRequirement([getTaskElement("Concentration")], []),
     "Productivity": new TaskRequirement([getTaskElement("Productivity")], [{task: "Concentration", requirement: 5}]),
     "Bargaining": new TaskRequirement([getTaskElement("Bargaining")], [{task: "Concentration", requirement: 20}]),
     "Meditation": new TaskRequirement([getTaskElement("Meditation")], [{task: "Concentration", requirement: 30}, {task: "Productivity", requirement: 20}]),
-
+    "Learning": new TaskRequirement([getTaskElement("Learning")], [{task: "Math", requirement: 4000}, {task: "Language", requirement: 4000}]),
+    
     //Combat
     "Strength": new TaskRequirement([getTaskElement("Strength")], []),
     "Battle tactics": new TaskRequirement([getTaskElement("Battle tactics")], [{task: "Concentration", requirement: 20}]),
@@ -1592,7 +1622,10 @@ gameData.requirements = {
 
     //Sailing
     "Sailing Mastery": new TaskRequirement([getTaskElement("Sailing Mastery")], [{task: "Concentration", requirement: 500}, {task: "Fisherman", requirement: 150}]),
-    "Wave Reading": new TaskRequirement([getTaskElement("Wave Reading")], [{task: "Sailing Mastery", requirement: 1000}, {task: "Pirate Captain", requirement: 1000}]),
+    "Wave Reading": new TaskRequirement([getTaskElement("Wave Reading")], [{task: "Sailing Mastery", requirement: 1000}, {task: "Pirate Captain", requirement: 750}]),
+    "Shipbuilding": new TaskRequirement([getTaskElement("Shipbuilding")], [{task: "Sailing Mastery", requirement: 1500}, {task: "Wave Reading", requirement: 1500}, {task: "Fisherman", requirement: 2500}]),
+    "Port management": new TaskRequirement([getTaskElement("Port management")], [{task: "Sailing Mastery", requirement: 2000}, {task: "Shipbuilding", requirement: 2000}, {task: "Wave Reading", requirement: 2000}, {task: "Warlord of the Sea", requirement: 1500}]),
+    
     //Magic
     "Mana control": new TaskRequirement([getTaskElement("Mana control")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
     "Immortality": new TaskRequirement([getTaskElement("Immortality")], [{task: "Apprentice mage", requirement: 10}]),
@@ -1616,6 +1649,16 @@ gameData.requirements = {
     "Blood meditation": new EvilRequirement([getTaskElement("Blood meditation")], [{requirement: 75}]),
     "Demon's wealth": new EvilRequirement([getTaskElement("Demon's wealth")], [{requirement: 500}]),
 
+    //Education
+    "Good behaviour": new TaskRequirement([getTaskElement("Good behaviour")], [{task: "Baronet", requirement: 1}]),
+    "Principles": new TaskRequirement([getTaskElement("Principles")], [{task: "Good behaviour", requirement: 150}]),
+    "Math": new TaskRequirement([getTaskElement("Math")], [{task: "Principles", requirement: 150}]),
+    "Language": new TaskRequirement([getTaskElement("Language")], [{task: "Math", requirement: 150}]),
+    "History": new TaskRequirement([getTaskElement("History")], [{task: "Language", requirement: 1000}]),
+    "Slavery": new TaskRequirement([getTaskElement("Slavery")], [{task: "History", requirement: 6000}, {task: "Language", requirement: 6000}, {task: "Math", requirement: 6000},
+        {task: "Principles", requirement: 6000}, {task: "Good behaviour", requirement: 6000}
+    ]), 
+
 
     //Properties
     "Homeless": new CoinRequirement([getItemElement("Homeless")], [{requirement: 0}]),
@@ -1627,6 +1670,8 @@ gameData.requirements = {
     "Small Manor": new CoinRequirement([getItemElement("Small Manor")], [{requirement: gameData.itemData["Small Manor"].getExpense() * 100}]),
     "Small palace": new CoinRequirement([getItemElement("Small palace")], [{requirement: gameData.itemData["Small palace"].getExpense() * 100}]),
     "Grand palace": new CoinRequirement([getItemElement("Grand palace")], [{requirement: gameData.itemData["Grand palace"].getExpense() * 100}]),
+    "Royal Compound": new CoinRequirement([getItemElement("Royal Compound")], [{requirement: gameData.itemData["Royal Compound"].getExpense() * 100}]),
+    "Interconnected Royal Compound": new CoinRequirement([getItemElement("Interconnected Royal Compound")], [{requirement: gameData.itemData["Interconnected Royal Compound"].getExpense() * 100}]),
 
     //Misc
     "Book": new CoinRequirement([getItemElement("Book")], [{requirement: 0}]),
