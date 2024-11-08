@@ -144,7 +144,7 @@ const skillBaseData = {
 
     //Education (nobility)
     "Good behaviour": {name: "Good behaviour", maxXp: 100, effect: 0.01, description: "Nobility xp"},
-    "Principles": {name: "Principles", maxXp: 100, effect: 0.01, description: "Nobility income"},
+    "Principles": {name: "Principles", maxXp: 100, effect: 0.001, description: "Nobility income"},
     "Math": {name: "Math", maxXp: 100, effect: 0.01, description: "Nobility xp"},
     "Language": {name: "Language", maxXp: 100, effect: 0.01, description: "Nobility Income"},
     "History": {name: "History", maxXp: 100, effect: 0.01, description: "Nobility xp"},
@@ -1651,9 +1651,9 @@ gameData.requirements = {
 
     //Education
     "Good behaviour": new TaskRequirement([getTaskElement("Good behaviour")], [{task: "Baronet", requirement: 1}]),
-    "Principles": new TaskRequirement([getTaskElement("Principles")], [{task: "Good behaviour", requirement: 150}]),
-    "Math": new TaskRequirement([getTaskElement("Math")], [{task: "Principles", requirement: 150}]),
-    "Language": new TaskRequirement([getTaskElement("Language")], [{task: "Math", requirement: 150}]),
+    "Principles": new TaskRequirement([getTaskElement("Principles")], [{task: "Good behaviour", requirement: 1000}]),
+    "Math": new TaskRequirement([getTaskElement("Math")], [{task: "Principles", requirement: 1000}]),
+    "Language": new TaskRequirement([getTaskElement("Language")], [{task: "Math", requirement: 1000}]),
     "History": new TaskRequirement([getTaskElement("History")], [{task: "Language", requirement: 1000}]),
     "Slavery": new TaskRequirement([getTaskElement("Slavery")], [{task: "History", requirement: 6000}, {task: "Language", requirement: 6000}, {task: "Math", requirement: 6000},
         {task: "Principles", requirement: 6000}, {task: "Good behaviour", requirement: 6000}
