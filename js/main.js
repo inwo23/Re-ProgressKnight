@@ -144,7 +144,7 @@ const skillBaseData = {
 
     //Education (nobility)
     "Good behaviour": {name: "Good behaviour", maxXp: 100, effect: 0.01, description: "Nobility xp"},
-    "Principles": {name: "Principles", maxXp: 100, effect: 0.001, description: "Nobility income"},
+    "Principles": {name: "Principles", maxXp: 100, effect: 0.005, description: "Nobility income"},
     "Math": {name: "Math", maxXp: 100, effect: 0.01, description: "Nobility xp"},
     "Language": {name: "Language", maxXp: 100, effect: 0.01, description: "Nobility Income"},
     "History": {name: "History", maxXp: 100, effect: 0.01, description: "Nobility xp"},
