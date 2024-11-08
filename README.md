@@ -1,5 +1,8 @@
-## Important /Nov/11/2024/: 
+## First Devlog /Nov/11/2024/: 
 - I am not the one who wrote all this, i am making a mod as a continuation to Progress knight Reborn.
+- I have added a new life path, as well as fleshed out another one, that was in progress. I have added two entirely new skill categories "Learning", and "Sailing".
+- I have added some new properties, but they're the latest of late game.
+- This is all for now, i will keep adding more stuff later.
 
 
 ## progress-knight
