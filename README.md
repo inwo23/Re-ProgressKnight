@@ -1,12 +1,18 @@
 ## First Devlog /Nov/11/2024/: 
+I am making a continuation of Progress Knight Reborn, since I don't enjoy all the automation of PK 2. Progress Knight + is my continuation, made by Fwitzz.
+
 - I am not the one who wrote all this, i am making a mod as a continuation to Progress knight Reborn.
 - I have added a new life path, as well as fleshed out another one, that was in progress. I have added two entirely new skill categories "Learning", and "Sailing".
 - I have added some new properties, but they're the latest of late game.
 - This is all for now, i will keep adding more stuff later.
 
 
+
 ## progress-knight
-An incremental game developed by ihtasham42 and extended by Cameron Gott. https://camerongott.github.io/progress-knight/
+An incremental game developed by ihtasham42 and extended by Cameron Gott, later extended by Fwitzz.
+
+Link to Cameron's version:
+https://camerongott.github.io/progress-knight/
 With assistance from:
 nathiral
 theSpuu
