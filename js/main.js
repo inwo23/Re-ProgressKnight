@@ -1572,8 +1572,8 @@ gameData.requirements = {
     "Pirate": new TaskRequirement([getTaskElement("Pirate")], [{task: "Legendary knight", requirement: 100}, {task: "Sailor Captain", requirement: 10}, {task: "Battle tactics", requirement: 1000}, {task: "Sailing Mastery", requirement: 1500}]),
     "Pirate Captain": new TaskRequirement([getTaskElement("Pirate Captain")], [{task: "Pirate", requirement: 25}, {task: "Battle tactics", requirement: 1000}, {task: "Sailing Mastery", requirement: 1500}]),
     "Warlord of the Sea": new TaskRequirement([getTaskElement("Warlord of the Sea")], [{task: "Pirate Captain", requirement: 100}, {task: "Battle tactics", requirement: 1000}, {task: "Sailing Mastery", requirement: 1500}, {task: "Wave Reading", requirement: 1000}]),
-    "Emperor of the Sea": new TaskRequirement([getTaskElement("Emperor of the Sea")], [{task: "Warlord of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2000}, {task: "Sailing Mastery", requirement: 2500}, {task: "Wave Reading", requirement: 2000}]),
-    "King of Pirates": new TaskRequirement([getTaskElement("King of Pirates")], [{task: "Illustrious Chairman", requirement: 2000}, {task: "Emperor of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2500}, {task: "Sailing Mastery", requirement: 3000}, {task: "Wave Reading", requirement: 3000}]), 
+    "Emperor of the Sea": new TaskRequirement([getTaskElement("Emperor of the Sea")], [{task: "Warlord of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2000}, {task: "Sailing Mastery", requirement: 1750}, {task: "Wave Reading", requirement: 2000}]),
+    "King of Pirates": new TaskRequirement([getTaskElement("King of Pirates")], [{task: "Illustrious Chairman", requirement: 1500}, {task: "Emperor of the Sea", requirement: 100}, {task: "Battle tactics", requirement: 2500}, {task: "Sailing Mastery", requirement: 2000}, {task: "Wave Reading", requirement: 2500}]), 
 
     //The Arcane Association
     "Student": new TaskRequirement([getTaskElement("Student")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
