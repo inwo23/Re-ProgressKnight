@@ -572,7 +572,7 @@ function setCustomEffects() {
     }
 
     timeFlux.getEffect = function () {
-        var multiplier = 5 + getBaseLog(100, timeFlux.level + 1);
+        var multiplier = 1 + getBaseLog(100, timeFlux.level + 1);
         return multiplier;
     }
 
