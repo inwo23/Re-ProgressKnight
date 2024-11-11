@@ -33,7 +33,7 @@ const baseLifespan = 365 * 70
 
 //Turn on devmode:  1
 //Turn off devmode: 0
-var devModeFastProgress = 0;
+var devModeFastProgress = 1;
 // ******* DEV MODE SPEED INCREASES ******* //
 //original base game speed: 4
 var baseGameSpeed = 10;
@@ -158,7 +158,7 @@ const skillBaseData = {
     "Demon training": {name: "Demon training", maxXp: 100, effect: 0.01, description: "All xp"},
     "Blood meditation": {name: "Blood meditation", maxXp: 100, effect: 0.01, description: "Evil gain"},
     "Demon's wealth": {name: "Demon's wealth", maxXp: 100, effect: 0.002, description: "Job pay"},
-
+    "Time flux": {name: "Time flux", maxXp: 100, effect: 0.1, description: "Gamespeed"},
     
 }
 
@@ -227,7 +227,7 @@ const skillCategories = {
     "Magic"                  :    ["Mana control", "Immortality", "Time warping", "Super immortality"],
     "Mind"                   :    ["Novel Knowledge", "Unusual Insight", "Trade Psychology", "Flow", "Magical Engineering", "Scales Of Thought", "Magical Biology"],
     "Education"              :    ["Good behaviour", "Principles", "Math", "Language", "History", "Slavery"],
-    "Dark magic"             :    ["Dark influence", "Evil control", "Intimidation", "Demon training", "Blood meditation", "Demon's wealth"],
+    "Dark magic"             :    ["Dark influence", "Evil control", "Intimidation", "Demon training", "Blood meditation", "Demon's wealth", "Time flux"],
 }
 
 const itemCategories = {
@@ -559,6 +559,7 @@ function setCustomEffects() {
     // to change the Time Warping skill description, which led to confusion. 
     var timeWarping = gameData.taskData["Time warping"];
     var flow = gameData.taskData["Flow"];
+    var timeFlux = gameData.taskData["Time flux"];
     // This re-defined getEffect() function is called in the getGameSpeed() function.
     timeWarping.getEffect = function() {
         var multiplier = 1 + getBaseLog(13, timeWarping.level + 1);
@@ -567,6 +568,11 @@ function setCustomEffects() {
 
     flow.getEffect = function () {
         var multiplier = 1 + getBaseLog(100, flow.level + 1) / 1.3;
+        return multiplier;
+    }
+
+    timeFlux.getEffect = function () {
+        var multiplier = 5 + getBaseLog(100, timeFlux.level + 1);
         return multiplier;
     }
 
@@ -614,9 +620,11 @@ function getEvilGain() {
 function getAllTimeMultipliers() {
     var timeWarping = gameData.taskData["Time warping"];
     var flow = gameData.taskData["Flow"];
+    var timeFlux = gameData.taskData["Time flux"];
     var flowSpeed = flow.getEffect();
+    var timeFluxSpeed = timeFlux.getEffect();
     var timeWarpingSpeed = gameData.timeWarpingEnabled ? timeWarping.getEffect() : 1;
-    var totalTimeMultiplier = flowSpeed * timeWarpingSpeed;
+    var totalTimeMultiplier = flowSpeed * timeWarpingSpeed * timeFluxSpeed;
     return totalTimeMultiplier;
     
 }
@@ -1655,6 +1663,7 @@ gameData.requirements = {
     "Demon training": new EvilRequirement([getTaskElement("Demon training")], [{requirement: 25}]),
     "Blood meditation": new EvilRequirement([getTaskElement("Blood meditation")], [{requirement: 75}]),
     "Demon's wealth": new EvilRequirement([getTaskElement("Demon's wealth")], [{requirement: 500}]),
+    "Time flux": new EvilRequirement([getTaskElement("Time flux")], [{requirement: 1250}]),
 
     //Education
     "Good behaviour": new TaskRequirement([getTaskElement("Good behaviour")], [{task: "Baronet", requirement: 1}]),
