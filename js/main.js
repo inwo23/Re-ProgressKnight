@@ -114,6 +114,7 @@ const skillBaseData = {
     "Bargaining": {name: "Bargaining", maxXp: 100, effect: -0.01, description: "Expenses"},
     "Meditation": {name: "Meditation", maxXp: 100, effect: baseEffect, description: "Happiness"},
     "Learning": {name: "Learning", maxXp: 100, effect: 100, description: "Education xp"},
+	"Water bending": {name: "Water bending", maxXp: 100, effect: 50, description: "Sailing xp"},
 
     //Combat
     "Strength": {name: "Strength", maxXp: 100, effect: 0.01, description: "Military pay"},
@@ -220,7 +221,7 @@ const jobCategories = {
 }
 
 const skillCategories = {
-    "Fundamentals"           :    ["Concentration", "Productivity", "Bargaining", "Meditation", "Learning"],
+    "Fundamentals"           :    ["Concentration", "Productivity", "Bargaining", "Meditation", "Learning", "Water bending"],
     "Combat"                 :    ["Strength", "Battle tactics", "Muscle memory"],
     "Sailing"                :    ["Sailing Mastery", "Wave Reading", "Shipbuilding", "Port management"],
     "Magic"                  :    ["Mana control", "Immortality", "Time warping", "Super immortality"],
@@ -463,7 +464,8 @@ function addMultipliers() {
        
 
         
-        } else if(task.name == "Farmer") { //trying to make hand tools increase farmer income
+        }
+       else if(task.name == "Farmer") { //trying to make hand tools increase farmer income
             task.incomeMultipliers.push(getBindedItemEffect("Basic Farm Tools"));
             task.xpMultipliers.push(getBindedItemEffect("Small Field"));
             task.incomeMultipliers.push(getBindedItemEffect("Small Field"));
@@ -511,6 +513,10 @@ function addMultipliers() {
             task.xpMultipliers.push(getEvil)
         } else if (skillCategories["Education"].includes(task.name)) {
             task.xpMultipliers.push(getBindedTaskEffect("Learning"))
+        }
+        else if(skillCategories["Sailing"].includes(task.name)) {
+            task.xpMultipliers.push(getBindedTaskEffect("Water bending"));
+
         }
         if (jobCategories["The Arcane Association"].includes(task.name)) {
             task.xpMultipliers.push(getBindedTaskEffect("Mana control"));
@@ -1614,7 +1620,8 @@ gameData.requirements = {
     "Bargaining": new TaskRequirement([getTaskElement("Bargaining")], [{task: "Concentration", requirement: 20}]),
     "Meditation": new TaskRequirement([getTaskElement("Meditation")], [{task: "Concentration", requirement: 30}, {task: "Productivity", requirement: 20}]),
     "Learning": new TaskRequirement([getTaskElement("Learning")], [{task: "Math", requirement: 2000}, {task: "Language", requirement: 2000}]),
-    
+	"Water bending": new TaskRequirement([getTaskElement("Water bending")], [{task: "Concentration", requirement: 2000}, {task: "Learning", requirement: 2000}]),
+	
     //Combat
     "Strength": new TaskRequirement([getTaskElement("Strength")], []),
     "Battle tactics": new TaskRequirement([getTaskElement("Battle tactics")], [{task: "Concentration", requirement: 20}]),
