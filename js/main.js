@@ -1613,7 +1613,7 @@ gameData.requirements = {
     "Productivity": new TaskRequirement([getTaskElement("Productivity")], [{task: "Concentration", requirement: 5}]),
     "Bargaining": new TaskRequirement([getTaskElement("Bargaining")], [{task: "Concentration", requirement: 20}]),
     "Meditation": new TaskRequirement([getTaskElement("Meditation")], [{task: "Concentration", requirement: 30}, {task: "Productivity", requirement: 20}]),
-    "Learning": new TaskRequirement([getTaskElement("Learning")], [{task: "Math", requirement: 4000}, {task: "Language", requirement: 4000}]),
+    "Learning": new TaskRequirement([getTaskElement("Learning")], [{task: "Math", requirement: 2000}, {task: "Language", requirement: 2000}]),
     
     //Combat
     "Strength": new TaskRequirement([getTaskElement("Strength")], []),
@@ -1623,8 +1623,8 @@ gameData.requirements = {
     //Sailing
     "Sailing Mastery": new TaskRequirement([getTaskElement("Sailing Mastery")], [{task: "Concentration", requirement: 500}, {task: "Fisherman", requirement: 150}]),
     "Wave Reading": new TaskRequirement([getTaskElement("Wave Reading")], [{task: "Sailing Mastery", requirement: 1000}, {task: "Pirate Captain", requirement: 750}]),
-    "Shipbuilding": new TaskRequirement([getTaskElement("Shipbuilding")], [{task: "Sailing Mastery", requirement: 1500}, {task: "Wave Reading", requirement: 1500}, {task: "Fisherman", requirement: 2500}]),
-    "Port management": new TaskRequirement([getTaskElement("Port management")], [{task: "Sailing Mastery", requirement: 2000}, {task: "Shipbuilding", requirement: 2000}, {task: "Wave Reading", requirement: 2000}, {task: "Warlord of the Sea", requirement: 1500}]),
+    "Shipbuilding": new TaskRequirement([getTaskElement("Shipbuilding")], [{task: "Sailing Mastery", requirement: 1500}, {task: "Wave Reading", requirement: 1500}, {task: "Fisherman", requirement: 2000}]),
+    "Port management": new TaskRequirement([getTaskElement("Port management")], [{task: "Sailing Mastery", requirement: 2000}, {task: "Shipbuilding", requirement: 2000}, {task: "Wave Reading", requirement: 2000}, {task: "Warlord of the Sea", requirement: 500}]),
     
     //Magic
     "Mana control": new TaskRequirement([getTaskElement("Mana control")], [{task: "Concentration", requirement: 200}, {task: "Meditation", requirement: 200}]),
@@ -1655,8 +1655,8 @@ gameData.requirements = {
     "Math": new TaskRequirement([getTaskElement("Math")], [{task: "Principles", requirement: 1000}]),
     "Language": new TaskRequirement([getTaskElement("Language")], [{task: "Math", requirement: 1000}]),
     "History": new TaskRequirement([getTaskElement("History")], [{task: "Language", requirement: 1000}]),
-    "Slavery": new TaskRequirement([getTaskElement("Slavery")], [{task: "History", requirement: 6000}, {task: "Language", requirement: 6000}, {task: "Math", requirement: 6000},
-        {task: "Principles", requirement: 6000}, {task: "Good behaviour", requirement: 6000}
+    "Slavery": new TaskRequirement([getTaskElement("Slavery")], [{task: "History", requirement: 3000}, {task: "Language", requirement: 3000}, {task: "Math", requirement: 3000},
+        {task: "Principles", requirement: 3000}, {task: "Good behaviour", requirement: 3000}
     ]), 
 
 
